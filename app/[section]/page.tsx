@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ArticleCard from "@/components/ArticleCard";
 import { getArticlesBySection, getSection, sections } from "@/lib/content";
 import { notFound } from "next/navigation";
 
