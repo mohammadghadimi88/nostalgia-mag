@@ -36,6 +36,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
       <section className="article-grid" aria-label={`مطالب مرتبط با ${tag}`}>
         {articles.map((article) => <ArticleCard article={article} key={article.slug} />)}
       </section>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </main>
   );
 }
