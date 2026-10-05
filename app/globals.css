@@ -110,3 +110,15 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 .quiz-promo h2 { margin:8px 0; font-size:clamp(1.5rem,4vw,2.5rem); }
 .quiz-promo p { margin:0; line-height:1.8; }
 @media (max-width:520px){ .quiz-promo { flex-direction:column; align-items:flex-start; } }
+
+
+.fortune-page { max-width: 900px; margin: 24px auto 60px; }
+.fortune-box { margin: 20px 0; padding: clamp(24px, 5vw, 48px); border: 3px double #17130e; background: #efe5d0; }
+.fortune-tabs { display:flex; gap:8px; margin-bottom:28px; }
+.fortune-tabs button, .fortune-draw { padding:11px 16px; border:1px solid #17130e; background:#f8f2e7; color:#17130e; font:inherit; cursor:pointer; }
+.fortune-tabs button.active, .fortune-tabs button:hover, .fortune-draw:hover { background:#17130e; color:#fffaf0; }
+.fortune-box h2 { margin:10px 0 16px; font-size:clamp(1.7rem,4vw,2.8rem); }
+.fortune-result { margin:20px 0; padding:22px; border-right:4px solid #17130e; background:#f8f2e7; }
+.fortune-result p { margin:0 0 10px; font-size:1.2rem; line-height:2; }
+.fortune-result small { opacity:.7; }
+@media(max-width:520px){ .fortune-tabs { flex-wrap:wrap; } }
