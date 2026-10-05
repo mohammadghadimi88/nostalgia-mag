@@ -4,7 +4,10 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nostalgia-mag.examp
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
+    rules: [
+      { userAgent: "*", allow: "/" },
+      { userAgent: "*", disallow: "/search" }
+    ],
     sitemap: `${baseUrl}/sitemap.xml`
   };
 }
