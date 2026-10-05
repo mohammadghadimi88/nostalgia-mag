@@ -40,7 +40,7 @@ export default function HomePage() {
         <div className="section-heading"><span>پیشنهاد سردبیر</span><h2 id="popular-heading">اگر این را دوست داشتی...</h2></div>
         <div className="article-grid">{popular.map((article) => <ArticleCard article={article} key={article.slug} />)}</div>
       </section>
-      <footer><div>نوستالژی مگ — یک مجله اینترنتی با حال‌وهوای گذشته</div><nav aria-label="پیوندهای مجله"><Link href="/about">درباره ما</Link><Link href="/editorial-policy">خط‌مشی تحریریه</Link><Link href="/tag">همه برچسب‌ها</Link><Link href="/rss.xml">RSS</Link></nav></footer>
+      <footer><div>نوستالژی مگ — یک مجله اینترنتی با حال‌وهوای گذشته</div><nav aria-label="پیوندهای مجله"><Link href="/about">درباره ما</Link><Link href="/editorial-policy">خط‌مشی تحریریه</Link><Link href="/author/editorial">تحریریه</Link><Link href="/tag">همه برچسب‌ها</Link><Link href="/rss.xml">RSS</Link></nav></footer>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </main>
   );
