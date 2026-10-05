@@ -1,15 +1,9 @@
-const sections = [
-  ["ستاره‌ها", "چهره‌ها، خاطرات و حاشیه‌های واقعی"],
-  ["نوستالژی", "از دهه ۶۰ تا ۹۰؛ چیزهایی که یادمان نرفته"],
-  ["بازی و تست", "تست‌های کوتاه و سرگرمی‌های قابل اشتراک"],
-  ["فال", "فال و سرگرمی روزانه"],
-  ["تلویزیون و سینما", "سریال‌ها، فیلم‌ها و موسیقی خاطره‌انگیز"],
-  ["عشق و زندگی", "داستان‌ها و موضوعات رابطه و زندگی"],
-  ["طنز", "جوک، خاطره و خنده"],
-  ["عجایب", "دانستنی‌های عجیب و واقعی"]
-];
+import Link from "next/link";
+import { articles, sections } from "@/lib/content";
 
 export default function HomePage() {
+  const featured = articles.find((article) => article.featured) ?? articles[0];
+
   return (
     <main>
       <header className="masthead">
@@ -20,23 +14,38 @@ export default function HomePage() {
 
       <section className="hero">
         <span>دکه امروز</span>
-        <h2>انگار یک مجله از سال ۱۳۸۵ وارد اینترنت امروز شده...</h2>
-        <p>
-          سرگرمی، ستاره‌ها، نوستالژی و چیزهایی که یک‌بار دیدیم و هیچ‌وقت فراموش نکردیم.
-        </p>
+        <h2>{featured.title}</h2>
+        <p>{featured.excerpt}</p>
+        <Link className="hero-link" href={`/article/${featured.slug}`}>خواندن مطلب ←</Link>
       </section>
 
       <section className="section-grid" aria-label="دسته‌بندی‌ها">
-        {sections.map(([title, description]) => (
-          <article className="section-card" key={title}>
+        {sections.map((section) => (
+          <Link className="section-card" href={`/${section.slug}`} key={section.slug}>
             <span>مجله</span>
-            <h3>{title}</h3>
-            <p>{description}</p>
-          </article>
+            <h3>{section.title}</h3>
+            <p>{section.description}</p>
+          </Link>
         ))}
       </section>
 
-      <footer>نوستالژی مگ — نسخه اولیه</footer>
+      <section className="latest">
+        <div className="section-heading">
+          <span>تازه از دکه</span>
+          <h2>چند مطلب برای شروع</h2>
+        </div>
+        <div className="article-grid">
+          {articles.slice(0, 4).map((article) => (
+            <Link className="article-card" href={`/article/${article.slug}`} key={article.slug}>
+              <span>{article.year ?? "مجله"}</span>
+              <h3>{article.title}</h3>
+              <p>{article.excerpt}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <footer>نوستالژی مگ — یک مجله اینترنتی با حال‌وهوای گذشته</footer>
     </main>
   );
 }
