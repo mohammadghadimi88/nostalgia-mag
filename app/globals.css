@@ -87,3 +87,5 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 .card-tags a { font-size: .72rem; text-decoration: underline; text-underline-offset: 3px; }
 .card-tags a:hover { font-weight: 700; }
+
+.loading-card { min-height: 280px; display: grid; align-content: center; gap: 8px; }
