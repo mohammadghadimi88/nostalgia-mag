@@ -149,3 +149,16 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 
 footer nav { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
 footer nav a { color: inherit; }
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  color: #6f675b;
+}
+.breadcrumbs a { color: inherit; text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.section-tags { margin: 18px 0 24px; }
