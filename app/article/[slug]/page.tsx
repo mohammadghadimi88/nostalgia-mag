@@ -42,7 +42,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     dateModified: article.updatedAt,
     keywords: article.tags.join(", "),
     mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(`/article/${article.slug}`) },
-    image: absoluteUrl(`/images/articles/${article.slug}.svg`)
+    image: absoluteUrl(`/images/articles/${article.slug}.svg`),
+    publisher: {
+      "@type": "Organization",
+      name: "نوستالژی مگ",
+      url: absoluteUrl()
+    }
   };
 
   const breadcrumbJsonLd = {
@@ -58,6 +63,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <main>
       <article className="article-page">
+        <div className="breadcrumbs" aria-label="مسیر صفحه">
+          <Link href="/">خانه</Link>
+          {section && (
+            <>
+              <span aria-hidden="true">›</span>
+              <Link href={`/${section.slug}`}>{section.title}</Link>
+            </>
+          )}
+          <span aria-hidden="true">›</span>
+          <span>{article.title}</span>
+        </div>
         <header className="article-header">
           <Link className="back-link" href={section ? `/${section.slug}` : "/"}>← {section?.title ?? "دکه"}</Link>
           <div className="issue">{article.year ?? "مجله"}</div>
