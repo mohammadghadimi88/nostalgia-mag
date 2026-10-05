@@ -24,7 +24,9 @@ export default async function SectionPage({ params }: { params: Promise<{ sectio
   const { section } = await params;
   const current = getSection(section);
   if (!current) notFound();
-  const articles = getArticlesBySection(section);\n  const featured = articles[0];\n  const tags = Array.from(new Set(articles.flatMap((article) => article.tags))).slice(0, 10);
+  const articles = getArticlesBySection(section);
+  const featured = articles[0];
+  const tags = Array.from(new Set(articles.flatMap((article) => article.tags))).slice(0, 10);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -42,6 +44,19 @@ export default async function SectionPage({ params }: { params: Promise<{ sectio
         <h1>{current.title}</h1>
         <p>{current.description}</p>
       </header>
+      {featured && (
+        <section className="hero" aria-label="مطلب منتخب">
+          <span>پیشنهاد سردبیر</span>
+          <h2>{featured.title}</h2>
+          <p>{featured.excerpt}</p>
+          <Link className="hero-link" href={`/article/${featured.slug}`}>خواندن مطلب</Link>
+        </section>
+      )}
+      {tags.length > 0 && (
+        <nav className="article-tags section-tags" aria-label="موضوعات این بخش">
+          {tags.map((tag) => <Link href={`/tag/${encodeURIComponent(tag)}`} key={tag}>#{tag}</Link>)}
+        </nav>
+      )}
       <section className="section-intro">
         <span>دکه امروز</span>
         <h2>چیزهایی برای خواندن، دیدن و یادآوری</h2>
