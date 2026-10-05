@@ -19,7 +19,12 @@ export const metadata: Metadata = {
     title: "نوستالژی مگ",
     description: "مجله سرگرمی و فرهنگ عامه ایرانی با حال‌وهوای نوستالژیک."
   },
-  twitter: {\n    card: "summary_large_image",\n    title: "نوستالژی مگ",\n    description: "مجله سرگرمی و فرهنگ عامه ایرانی با حال‌وهوای نوستالژیک.",\n    images: ["/twitter-image.svg"]\n  },\n  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: "نوستالژی مگ",
+    description: "مجله سرگرمی و فرهنگ عامه ایرانی با حال‌وهوای نوستالژیک.",
+    images: ["/twitter-image.svg"]
+  },\n  robots: { index: true, follow: true },
   category: "entertainment",
   creator: "نوستالژی مگ",
   publisher: "نوستالژی مگ",
