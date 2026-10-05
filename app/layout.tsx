@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   },
   description: "مجله سرگرمی، نوستالژی و فرهنگ عامه ایرانی؛ از دهه ۶۰ تا امروز.",
   keywords: ["نوستالژی", "سرگرمی", "مجله", "فرهنگ عامه", "سینما", "تلویزیون", "فال"],
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "fa_IR",
@@ -23,7 +22,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   category: "entertainment",
   creator: "نوستالژی مگ",
-  publisher: "نوستالژی مگ"
+  publisher: "نوستالژی مگ",
+  icons: { icon: "/favicon.ico" },
+  alternates: { canonical: "/", types: { "application/rss+xml": "/rss.xml" } }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
