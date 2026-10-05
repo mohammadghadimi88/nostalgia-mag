@@ -146,3 +146,6 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 .tag-index-item span { font-size: .8rem; opacity: .7; }
 @media (max-width: 800px) { .tag-index { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .tag-index { grid-template-columns: 1fr; padding: 0; } .tag-suggestions { margin-inline: 0; } }
+
+footer nav { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+footer nav a { color: inherit; }
