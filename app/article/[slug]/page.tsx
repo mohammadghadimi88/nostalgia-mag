@@ -37,7 +37,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     headline: article.title,
     description: article.excerpt,
     articleSection: section?.title,
-    author: { "@type": "Organization", name: article.author },
+    author: {
+      "@type": "Organization",
+      name: article.author,
+      url: absoluteUrl("/author/editorial")
+    },
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
     keywords: article.tags.join(", "),
