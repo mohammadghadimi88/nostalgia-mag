@@ -302,6 +302,33 @@ export function getArticlesByTag(tag: string) {
   return articles.filter((article) => article.tags.includes(tag));
 }
 
+export function searchArticles(query: string, limit = 20) {
+  const q = query.trim().toLocaleLowerCase("fa");
+  if (!q) return [];
+  return articles.map((article) => {
+    const title = article.title.toLocaleLowerCase("fa");
+    const excerpt = article.excerpt.toLocaleLowerCase("fa");
+    const tags = article.tags.join(" ").toLocaleLowerCase("fa");
+    const body = article.content.join(" ").toLocaleLowerCase("fa");
+    const section = getSection(article.section)?.title.toLocaleLowerCase("fa") ?? "";
+    let score = 0;
+    if (title === q) score += 100;
+    if (title.includes(q)) score += 50;
+    if (tags.includes(q)) score += 35;
+    if (excerpt.includes(q)) score += 20;
+    if (section.includes(q)) score += 15;
+    if (body.includes(q)) score += 5;
+    return { article, score };
+  }).filter(({ score }) => score > 0).sort((a, b) => b.score - a.score || a.article.title.localeCompare(b.article.title, "fa")).slice(0, limit).map(({ article }) => article);
+}
+
+export function getRelatedTags(tag: string, limit = 8) {
+  const related = getArticlesByTag(tag).flatMap((article) => article.tags).filter((item) => item !== tag);
+  const counts = new Map<string, number>();
+  for (const item of related) counts.set(item, (counts.get(item) ?? 0) + 1);
+  return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "fa")).slice(0, limit).map(([item]) => item);
+}
+
 export function getRelatedArticles(article: Article, limit = 3) {
   return articles
     .filter((item) => item.slug !== article.slug)
