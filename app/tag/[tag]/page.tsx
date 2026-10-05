@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
-import { getAllTags, getArticlesByTag } from "@/lib/content";
+import { getAllTags, getArticlesByTag, getRelatedTags } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
 import { notFound } from "next/navigation";
 
@@ -23,6 +23,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
   const { tag } = await params;
   const articles = getArticlesByTag(tag);
   if (!articles.length) notFound();
+  const relatedTags = getRelatedTags(tag);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -38,11 +39,12 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
         <Link className="back-link" href="/">نوستالژی مگ</Link>
         <div className="issue">برچسب</div>
         <h1>#{tag}</h1>
-        <p>همه مطالب مرتبط با این موضوع در یک قفسه.</p>
+        <p>{articles.length} مطلب در این قفسه پیدا شد.</p>
       </header>
       <section className="article-grid" aria-label={`مطالب مرتبط با ${tag}`}>
         {articles.map((article) => <ArticleCard article={article} key={article.slug} />)}
       </section>
+      {relatedTags.length > 0 && <nav className="tag-suggestions related-tags" aria-label="برچسب‌های مرتبط"><span>برچسب‌های مرتبط</span><div>{relatedTags.map((item) => <Link href={"/tag/" + encodeURIComponent(item)} key={item}>#{item}</Link>)}</div></nav>}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </main>
   );
