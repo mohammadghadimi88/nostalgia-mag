@@ -56,6 +56,10 @@ main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
 .article-header { margin-top: 18px; padding: clamp(26px, 6vw, 56px); border: 3px double #17130e; background: #efe5d0; }
 .article-header h1 { margin: 18px 0 12px; font-size: clamp(2rem, 5vw, 4.2rem); line-height: 1.2; }
 .article-lead { margin: 0; font-size: 1.15rem; line-height: 2; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 18px; font-size: .82rem; opacity: .8; }
+.article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.article-tags a { padding: 5px 9px; border: 1px solid #17130e; font-size: .78rem; }
+.article-tags a:hover { background: #17130e; color: #fffaf0; }
 .article-body { padding: 30px 18px; font-size: 1.12rem; line-height: 2.15; }
 .article-body p { margin: 0 0 24px; }
 .related { border-top: 2px solid #17130e; padding-top: 18px; }
