@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ArticleCard from "@/components/ArticleCard";
 import { notFound } from "next/navigation";
 import { getArticle, getRelatedArticles, getSection, articles } from "@/lib/content";
@@ -64,6 +65,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <span>نویسنده: {article.author}</span>
             <span>به‌روزرسانی: {article.updatedAt}</span>
           </div>
+          <Image
+            className="article-hero-image"
+            src={`/images/articles/${article.slug}.svg`}
+            alt=""
+            width={1200}
+            height={675}
+            priority
+            sizes="(max-width: 860px) 100vw, 860px"
+          />
           <div className="article-tags">
             {article.tags.map((tag) => <Link href={`/tag/${encodeURIComponent(tag)}`} key={tag}>#{tag}</Link>)}
           </div>
