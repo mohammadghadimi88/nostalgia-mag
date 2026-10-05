@@ -18,6 +18,13 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
   const articles = getArticlesByTag(tag);
   if (!articles.length) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `مطالب مرتبط با ${tag}`,
+    description: `مطالب نوستالژی مگ درباره ${tag}`
+  };
+
   return (
     <main>
       <header className="masthead">
