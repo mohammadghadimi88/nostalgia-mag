@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { articles, sections } from "@/lib/content";
+import { absoluteUrl } from "@/lib/site";
 
 export default function HomePage() {
   const featured = articles.find((article) => article.featured) ?? articles[0];
@@ -8,7 +9,7 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "نوستالژی مگ",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nostalgia-mag.example",
+    url: absoluteUrl(),
     description: "مجله سرگرمی، نوستالژی و فرهنگ عامه ایرانی."
   };
 
