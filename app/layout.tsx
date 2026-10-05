@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "مجله سرگرمی، نوستالژی و فرهنگ عامه ایرانی؛ از دهه ۶۰ تا امروز.",
   keywords: ["نوستالژی", "سرگرمی", "مجله", "فرهنگ عامه", "سینما", "تلویزیون", "فال"],
   openGraph: {
-    images: ["/opengraph-image"],
+    images: [{ url: "/opengraph-image.svg", width: 1200, height: 630, alt: "نوستالژی مگ" }],
     type: "website",
     locale: "fa_IR",
     siteName: "نوستالژی مگ",
