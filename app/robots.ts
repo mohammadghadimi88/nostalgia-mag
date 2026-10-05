@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nostalgia-mag.example";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://nostalgia-mag.example/sitemap.xml"
+    sitemap: `${baseUrl}/sitemap.xml`
   };
 }
