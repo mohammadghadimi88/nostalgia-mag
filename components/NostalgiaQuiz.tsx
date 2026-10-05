@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ShareResult from "@/components/ShareResult";
 
 type Question = {
   text: string;
@@ -31,6 +32,7 @@ export default function NostalgiaQuiz() {
     <section className="quiz-box" aria-live="polite">
       <span>نتیجه تست</span><h2>{result[0]}</h2><p>{result[1]}</p>
       <p className="quiz-score">امتیاز تو: {score} از ۲۰</p>
+      <ShareResult title="نتیجه تست نوستالژی من" text={`من شدم «${result[0]}»! تو چی؟`} />
       <button onClick={() => { setStep(0); setScore(0); setDone(false); }}>دوباره بازی می‌کنم</button>
     </section>
   );
