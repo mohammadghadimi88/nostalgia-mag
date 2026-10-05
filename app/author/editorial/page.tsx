@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { articles } from "@/lib/content";
 import ArticleCard from "@/components/ArticleCard";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata = {
   title: "تحریریه نوستالژی مگ",
@@ -16,7 +17,7 @@ export default function EditorialAuthorPage() {
     "@type": "ProfilePage",
     name: "تحریریه نوستالژی مگ",
     description: "صفحه تحریریه نوستالژی مگ.",
-    url: "/author/editorial"
+    url: absoluteUrl("/author/editorial")
   };
 
   return (
