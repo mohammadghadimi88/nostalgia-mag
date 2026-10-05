@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ShareResult from "@/components/ShareResult";
 
 const fortunes = [
   ["امروز برای شروع کاری که مدام عقب انداخته‌ای روز بدی نیست.", "فال روزانه"],
@@ -38,7 +39,7 @@ export default function FortuneWidget() {
       </div>
       <span>{mode === "daily" ? "یک مکث کوتاه" : "به نیت دل"}</span>
       <h2>{mode === "daily" ? "فال امروزت را بگیر" : "یک غزل برای نیتت"}</h2>
-      {result ? <div className="fortune-result"><p>{result[0]}</p><small>{result[1]}</small></div> : <p>دکمه را بزن؛ ببین امروز مجله چه می‌گوید.</p>}
+      {result ? <div className="fortune-result"><p>{result[0]}</p><small>{result[1]}</small><ShareResult title="فال من در نوستالژی مگ" text={`فال من: ${result[0]}`} /></div> : <p>دکمه را بزن؛ ببین امروز مجله چه می‌گوید.</p>}
       <button className="fortune-draw" onClick={draw}>{result ? "یک فال دیگر ←" : "فال بگیر ←"}</button>
     </section>
   );
