@@ -24,7 +24,7 @@ export default async function SectionPage({ params }: { params: Promise<{ sectio
   const { section } = await params;
   const current = getSection(section);
   if (!current) notFound();
-  const articles = getArticlesBySection(section);
+  const articles = getArticlesBySection(section);\n  const featured = articles[0];\n  const tags = Array.from(new Set(articles.flatMap((article) => article.tags))).slice(0, 10);
 
   const jsonLd = {
     "@context": "https://schema.org",
