@@ -17,7 +17,20 @@ export default function EditorialAuthorPage() {
     "@type": "ProfilePage",
     name: "تحریریه نوستالژی مگ",
     description: "صفحه تحریریه نوستالژی مگ.",
-    url: absoluteUrl("/author/editorial")
+    url: absoluteUrl("/author/editorial"),
+    mainEntity: {
+      "@type": "Organization",
+      "@id": absoluteUrl("/author/editorial") + "#editorial",
+      name: "تحریریه نوستالژی مگ",
+      url: absoluteUrl("/author/editorial")
+    },
+    hasPart: latest.map((article) => ({
+      "@type": "Article",
+      headline: article.title,
+      url: absoluteUrl("/article/" + article.slug),
+      datePublished: article.publishedAt,
+      author: { "@id": absoluteUrl("/author/editorial") + "#editorial" }
+    }))
   };
 
   return (
