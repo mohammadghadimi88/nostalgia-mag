@@ -82,3 +82,7 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
   .article-body { padding: 24px 8px; }
   .search-form { flex-direction: column; }
 }
+
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.card-tags a { font-size: .72rem; text-decoration: underline; text-underline-offset: 3px; }
+.card-tags a:hover { font-weight: 700; }
