@@ -95,3 +95,13 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 
 .loading-card { min-height: 280px; display: grid; align-content: center; gap: 8px; }
 .hero-link { border: 0; background: none; color: inherit; font: inherit; cursor: pointer; padding: 0; }
+
+
+.quiz-page { max-width: 900px; margin: 24px auto 60px; }
+.quiz-box { margin: 20px 0; padding: clamp(24px, 5vw, 48px); border: 3px double #17130e; background: #efe5d0; }
+.quiz-box h2 { margin: 12px 0 20px; font-size: clamp(1.6rem, 4vw, 2.7rem); line-height: 1.45; }
+.quiz-progress, .quiz-score { font-size: .9rem; opacity: .75; }
+.quiz-options { display: grid; gap: 10px; }
+.quiz-options button, .quiz-box > button { padding: 15px 18px; border: 1px solid #17130e; background: #f8f2e7; color: #17130e; font: inherit; cursor: pointer; text-align: right; }
+.quiz-options button:hover, .quiz-box > button:hover { background: #17130e; color: #fffaf0; }
+.quiz-note { text-align: center; font-size: .82rem; opacity: .7; }
