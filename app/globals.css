@@ -127,3 +127,6 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 .fortune-promo h2 { margin:8px 0; font-size:clamp(1.5rem,4vw,2.5rem); }
 .fortune-promo p { margin:0; line-height:1.8; }
 @media(max-width:520px){ .fortune-promo { flex-direction:column; align-items:flex-start; } }
+
+.share-result { margin-top:14px; padding:10px 14px; border:1px solid #17130e; background:#17130e; color:#fffaf0; font:inherit; cursor:pointer; }
+.share-result:hover { opacity:.85; }
