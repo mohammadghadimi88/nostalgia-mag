@@ -2,6 +2,7 @@ import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { notFound } from "next/navigation";
 import { getArticle, getRelatedArticles, getSection, articles } from "@/lib/content";
+import { absoluteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -45,9 +46,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "خانه", item: "/" },
-      ...(section ? [{ "@type": "ListItem", position: 2, name: section.title, item: `/${section.slug}` }] : []),
-      { "@type": "ListItem", position: section ? 3 : 2, name: article.title, item: `/article/${article.slug}` }
+      { "@type": "ListItem", position: 1, name: "خانه", item: absoluteUrl() },
+      ...(section ? [{ "@type": "ListItem", position: 2, name: section.title, item: absoluteUrl(`/${section.slug}`) }] : []),
+      { "@type": "ListItem", position: section ? 3 : 2, name: article.title, item: absoluteUrl(`/article/${article.slug}`) }
     ]
   };
 
