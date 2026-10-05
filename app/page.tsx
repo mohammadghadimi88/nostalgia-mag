@@ -29,6 +29,9 @@ export default function HomePage() {
         <div className="article-grid">{articles.filter((article) => article.section === "nostalgia").slice(0, 3).map((article) => <ArticleCard article={article} key={article.slug} />)}</div>
       </section>
       <section className="latest" aria-labelledby="popular-heading">
+        <div className="section-heading"><span>قفسه‌های بیشتر</span><h2>برای هر حال یک گوشه داریم</h2></div>
+        <div className="section-grid">{sections.filter((section) => !["nostalgia","stars","games","fortune"].includes(section.slug)).map((section) => <Link className="section-card" href={`/${section.slug}`} key={section.slug}><span>مجله</span><h3>{section.title}</h3><p>{section.description}</p></Link>)}</div>
+      </section>
         <div className="section-heading"><span>پیشنهاد سردبیر</span><h2 id="popular-heading">اگر این را دوست داشتی...</h2></div>
         <div className="article-grid">{articles.filter((article) => ["stars", "games", "tv-cinema"].includes(article.section)).slice(0, 3).map((article) => <ArticleCard article={article} key={article.slug} />)}</div>
       </section>
