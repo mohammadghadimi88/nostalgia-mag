@@ -10,7 +10,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
   const { tag } = await params;
   if (!getAllTags().includes(tag)) return {};
-  return { title: `مطالب مرتبط با ${tag}`, description: `مطالب نوستالژی مگ درباره ${tag}` };
+  return {
+    title: `مطالب مرتبط با ${tag}`,
+    description: `مطالب نوستالژی مگ درباره ${tag}`,
+    alternates: { canonical: `/tag/${encodeURIComponent(tag)}` },
+    openGraph: { type: "website", title: `مطالب مرتبط با ${tag}`, description: `مطالب نوستالژی مگ درباره ${tag}` }
+  };
 }
 
 export default async function TagPage({ params }: { params: Promise<{ tag: string }> }) {
