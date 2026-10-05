@@ -80,7 +80,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <h1>{article.title}</h1>
           <p className="article-lead">{article.excerpt}</p>
           <div className="article-meta">
-            <span>نویسنده: {article.author}</span>
+            <span>نویسنده: <Link href="/author/editorial">{article.author}</Link></span>
             <span>به‌روزرسانی: {article.updatedAt}</span>
           </div>
           <Image
