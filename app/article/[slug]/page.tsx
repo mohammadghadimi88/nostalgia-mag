@@ -66,7 +66,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <span>به‌روزرسانی: {article.updatedAt}</span>
           </div>
           <div className="article-tags">
-            {article.tags.map((tag) => <Link href={`/search?q=${encodeURIComponent(tag)}`} key={tag}>#{tag}</Link>)}
+            {article.tags.map((tag) => <Link href={`/tag/${encodeURIComponent(tag)}`} key={tag}>#{tag}</Link>)}
           </div>
         </header>
 
@@ -83,7 +83,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </section>
         )}
       </article>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />\n      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} />
     </main>
   );
 }
