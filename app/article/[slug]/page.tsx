@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { notFound } from "next/navigation";
-import { getArticle, getArticlesBySection, getSection, articles } from "@/lib/content";
+import { getArticle, getRelatedArticles, getSection, articles } from "@/lib/content";
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -27,9 +27,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   if (!article) notFound();
 
   const section = getSection(article.section);
-  const related = getArticlesBySection(article.section)
-    .filter((item) => item.slug !== article.slug)
-    .slice(0, 3);
+  const related = getRelatedArticles(article, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
