@@ -130,3 +130,5 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 
 .share-result { margin-top:14px; padding:10px 14px; border:1px solid #17130e; background:#17130e; color:#fffaf0; font:inherit; cursor:pointer; }
 .share-result:hover { opacity:.85; }
+
+.quiz-reset { margin-top:12px; padding:10px 14px; border:1px solid #17130e; background:#f8f2e7; font:inherit; cursor:pointer; }
