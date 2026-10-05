@@ -115,3 +115,18 @@ export function getAllTags() {
 export function getArticlesByTag(tag: string) {
   return articles.filter((article) => article.tags.includes(tag));
 }
+
+export function getRelatedArticles(article: Article, limit = 3) {
+  return articles
+    .filter((item) => item.slug !== article.slug)
+    .map((item) => ({
+      article: item,
+      score:
+        (item.section === article.section ? 3 : 0) +
+        item.tags.reduce((score, tag) => score + (article.tags.includes(tag) ? 2 : 0), 0)
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || a.article.title.localeCompare(b.article.title, "fa"))
+    .slice(0, limit)
+    .map(({ article: item }) => item);
+}
