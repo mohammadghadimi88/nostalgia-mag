@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { sections } from "@/lib/content";
+import { getArticlesBySection, getSection, sections } from "@/lib/content";
 
 export function generateStaticParams() {
   return sections.map((section) => ({ section: section.slug }));
@@ -11,20 +12,33 @@ export default async function SectionPage({
   params: Promise<{ section: string }>;
 }) {
   const { section } = await params;
-  const current = sections.find((item) => item.slug === section);
+  const current = getSection(section);
   if (!current) notFound();
+
+  const articles = getArticlesBySection(section);
 
   return (
     <main>
       <header className="masthead">
-        <div className="issue">دکه امروز</div>
+        <Link className="back-link" href="/">نوستالژی مگ</Link>
+        <div className="issue">قفسه امروز</div>
         <h1>{current.title}</h1>
         <p>{current.description}</p>
       </header>
-      <section className="hero">
-        <span>به‌زودی</span>
-        <h2>این قفسه در حال چیده‌شدن است.</h2>
-        <p>ساختار محتوایی این بخش آماده است و در مرحله بعد اولین مطالب واقعی وارد آن می‌شوند.</p>
+
+      <section className="section-intro">
+        <span>دکه امروز</span>
+        <h2>چیزهایی برای خواندن، دیدن و یادآوری</h2>
+      </section>
+
+      <section className="article-grid" aria-label={current.title}>
+        {articles.map((article) => (
+          <Link className="article-card" href={`/article/${article.slug}`} key={article.slug}>
+            <span>{article.year ?? "مجله"}</span>
+            <h2>{article.title}</h2>
+            <p>{article.excerpt}</p>
+          </Link>
+        ))}
       </section>
     </main>
   );
