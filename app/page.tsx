@@ -4,6 +4,14 @@ import { articles, sections } from "@/lib/content";
 
 export default function HomePage() {
   const featured = articles.find((article) => article.featured) ?? articles[0];
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "نوستالژی مگ",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nostalgia-mag.example",
+    description: "مجله سرگرمی، نوستالژی و فرهنگ عامه ایرانی."
+  };
+
   return (
     <main>
       <header className="masthead"><div className="issue">شماره ۰۰۱</div><h1>نوستالژی مگ</h1><p>اخبار مهمی که اصلاً مهم نیستند!</p></header>
