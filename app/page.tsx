@@ -22,6 +22,7 @@ export default function HomePage() {
         <div className="section-heading"><span>تازه از دکه</span><h2 id="latest-heading">تازه‌ترین مطالب</h2></div>
         <div className="article-grid">{articles.slice(0, 6).map((article) => <ArticleCard article={article} key={article.slug} />)}</div>
       </section>
+      <section className="fortune-promo"><div><span>فال امروز</span><h2>یک نیت کن، یک فال بگیر</h2><p>فال روزانه و فال حافظ؛ فقط برای چند دقیقه سرگرمی.</p></div><Link className="hero-link" href="/fortune">رفتن به فال ←</Link></section>
       <section className="quiz-promo"><div><span>بازی امروز</span><h2>چقدر از نسل نوستالژی هستی؟</h2><p>چهار سؤال کوتاه؛ یک نتیجه قابل اشتراک‌گذاری.</p></div><Link className="hero-link" href="/games/nostalgia">شروع تست ←</Link></section>
       <section className="latest" aria-labelledby="nostalgia-heading">
         <div className="section-heading"><span>نوستالژی امروز</span><h2 id="nostalgia-heading">یک قدم به عقب</h2></div>
