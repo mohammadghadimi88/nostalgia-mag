@@ -89,3 +89,4 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 .card-tags a:hover { font-weight: 700; }
 
 .loading-card { min-height: 280px; display: grid; align-content: center; gap: 8px; }
+.hero-link { border: 0; background: none; color: inherit; font: inherit; cursor: pointer; padding: 0; }
