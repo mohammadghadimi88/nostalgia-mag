@@ -6,6 +6,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nostalgia-mag.examp
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: baseUrl, changeFrequency: "daily", priority: 1 },
+    { url: `${baseUrl}/author/editorial`, changeFrequency: "weekly", priority: 0.5 },
     ...sections.map((section) => ({
       url: `${baseUrl}/${section.slug}`,
       changeFrequency: "daily" as const,
