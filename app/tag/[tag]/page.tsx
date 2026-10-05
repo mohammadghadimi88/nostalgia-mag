@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { getAllTags, getArticlesByTag } from "@/lib/content";
+import { absoluteUrl } from "@/lib/site";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
