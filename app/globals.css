@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f4efe4;
+}
+
+body {
+  margin: 0;
+  color: #17130e;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(0,0,0,.035), transparent 30%),
+    #f4efe4;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.masthead {
+  margin: 24px 0 18px;
+  padding: 24px;
+  border: 3px double #17130e;
+  background: #efe5d0;
+  text-align: center;
+}
+
+.masthead h1 {
+  margin: 4px 0;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  letter-spacing: -2px;
+}
+
+.masthead p {
+  margin: 8px 0 0;
+  font-size: 1.05rem;
+}
+
+.issue {
+  font-size: .8rem;
+  letter-spacing: 2px;
+}
+
+.hero {
+  padding: clamp(28px, 6vw, 64px);
+  border: 1px solid #17130e;
+  background: #ded1b8;
+}
+
+.hero span {
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.hero h2 {
+  max-width: 850px;
+  margin: 12px 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.12;
+}
+
+.hero p {
+  max-width: 700px;
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.section-card {
+  min-height: 190px;
+  padding: 20px;
+  border: 1px solid #17130e;
+  background: #f8f2e7;
+}
+
+.section-card span {
+  font-size: .75rem;
+}
+
+.section-card h3 {
+  margin: 12px 0 8px;
+  font-size: 1.5rem;
+}
+
+.section-card p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+footer {
+  padding: 28px 0 50px;
+  text-align: center;
+  font-size: .85rem;
+}
+
+@media (max-width: 800px) {
+  .section-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  main {
+    width: min(100% - 20px, 1120px);
+  }
+
+  .masthead,
+  .hero {
+    padding: 22px;
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+}
