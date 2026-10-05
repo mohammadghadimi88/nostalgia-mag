@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...articles.map((article) => ({
       url: `${baseUrl}/article/${article.slug}`,
+      lastModified: article.updatedAt,
       changeFrequency: "weekly" as const,
       priority: article.featured ? 0.9 : 0.7
     }))
