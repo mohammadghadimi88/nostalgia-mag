@@ -43,6 +43,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     keywords: article.tags.join(", ")
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "خانه", item: "/" },
+      ...(section ? [{ "@type": "ListItem", position: 2, name: section.title, item: `/${section.slug}` }] : []),
+      { "@type": "ListItem", position: section ? 3 : 2, name: article.title, item: `/article/${article.slug}` }
+    ]
+  };
+
   return (
     <main>
       <article className="article-page">
@@ -73,7 +83,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </section>
         )}
       </article>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />\n      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} />
     </main>
   );
 }
