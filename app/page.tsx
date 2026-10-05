@@ -1,4 +1,6 @@
 import Link from "next/link";
+import ArticleCard from "@/components/ArticleCard";
+import SiteHeader from "@/components/SiteHeader";
 import { articles, sections } from "@/lib/content";
 
 export default function HomePage() {
@@ -6,6 +8,7 @@ export default function HomePage() {
 
   return (
     <main>
+      <SiteHeader />
       <header className="masthead">
         <div className="issue">شماره ۰۰۱</div>
         <h1>نوستالژی مگ</h1>
@@ -35,13 +38,7 @@ export default function HomePage() {
           <h2>چند مطلب برای شروع</h2>
         </div>
         <div className="article-grid">
-          {articles.slice(0, 4).map((article) => (
-            <Link className="article-card" href={`/article/${article.slug}`} key={article.slug}>
-              <span>{article.year ?? "مجله"}</span>
-              <h3>{article.title}</h3>
-              <p>{article.excerpt}</p>
-            </Link>
-          ))}
+          {articles.slice(0, 4).map((article) => <ArticleCard article={article} key={article.slug} />)}
         </div>
       </section>
 
