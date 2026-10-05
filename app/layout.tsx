@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   category: "entertainment",
   creator: "نوستالژی مگ",
   publisher: "نوستالژی مگ",
-  icons: { icon: "/favicon.ico" },
+  icons: { icon: "/favicon.svg" },
   alternates: { canonical: "/", types: { "application/rss+xml": "/rss.xml" } }
 };
 
