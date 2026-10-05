@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   },
   description:
     "مجله سرگرمی، نوستالژی و فرهنگ عامه ایرانی؛ از دهه ۶۰ تا امروز.",
+  keywords: ["نوستالژی", "سرگرمی", "مجله", "فرهنگ عامه", "سینما", "تلویزیون", "فال"],
   robots: {
     index: true,
     follow: true
