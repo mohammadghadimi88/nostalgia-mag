@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { getArticlesBySection, getSection, sections } from "@/lib/content";
+import { absoluteUrl } from "@/lib/site";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
@@ -30,7 +31,7 @@ export default async function SectionPage({ params }: { params: Promise<{ sectio
     "@type": "CollectionPage",
     name: current.title,
     description: current.description,
-    url: `/${current.slug}`
+    url: absoluteUrl(`/${current.slug}`)
   };
 
   return (
