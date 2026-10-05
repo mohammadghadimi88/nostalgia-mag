@@ -19,6 +19,7 @@ export default function HomePage() {
       <section className="section-grid" aria-label="دسته‌بندی‌ها">{sections.map((section) => <Link className="section-card" href={`/${section.slug}`} key={section.slug}><span>مجله</span><h3>{section.title}</h3><p>{section.description}</p></Link>)}</section>
       <section className="latest"><div className="section-heading"><span>تازه از دکه</span><h2>چند مطلب برای شروع</h2></div><div className="article-grid">{articles.slice(0, 4).map((article) => <ArticleCard article={article} key={article.slug} />)}</div></section>
       <footer>نوستالژی مگ — یک مجله اینترنتی با حال‌وهوای گذشته</footer>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </main>
   );
 }
