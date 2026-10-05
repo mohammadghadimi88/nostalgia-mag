@@ -132,3 +132,17 @@ footer { padding: 28px 0 50px; text-align: center; font-size: .85rem; }
 .share-result:hover { opacity:.85; }
 
 .quiz-reset { margin-top:12px; padding:10px 14px; border:1px solid #17130e; background:#f8f2e7; font:inherit; cursor:pointer; }
+
+.search-results { margin: 28px 0; }
+.tag-suggestions { max-width: 1100px; margin: 28px auto 60px; padding: 18px 22px; border-top: 2px solid #17130e; border-bottom: 1px solid #17130e; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.tag-suggestions > span { font-weight: 700; }
+.tag-suggestions > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-suggestions a, .card-tags a, .card-tags span { padding: 5px 9px; border: 1px solid #17130e; background: #efe5d0; color: #17130e; text-decoration: none; font-size: .82rem; }
+.tag-suggestions a:hover, .card-tags a:hover { background: #17130e; color: #fffaf0; }
+.related-tags { margin-top: 36px; }
+.tag-index { max-width: 1100px; margin: 30px auto 70px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 18px; }
+.tag-index-item { padding: 18px; border: 1px solid #17130e; background: #efe5d0; color: #17130e; text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tag-index-item:hover { background: #17130e; color: #fffaf0; }
+.tag-index-item span { font-size: .8rem; opacity: .7; }
+@media (max-width: 800px) { .tag-index { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .tag-index { grid-template-columns: 1fr; padding: 0; } .tag-suggestions { margin-inline: 0; } }
