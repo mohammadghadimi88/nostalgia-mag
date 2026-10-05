@@ -51,6 +51,10 @@ main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
 
 .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
 .article-card { display: block; min-height: 220px; padding: 22px; border: 1px solid #17130e; background: #f8f2e7; transition: transform .15s ease, box-shadow .15s ease; }
+.article-card-media { display: block; margin: -22px -22px 18px; border-bottom: 1px solid #17130e; overflow: hidden; background: #ded1b8; }
+.article-card-media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .2s ease; }
+.article-card:hover .article-card-media img { transform: scale(1.025); }
+
 .article-card h2, .article-card h3 { margin: 12px 0 10px; line-height: 1.35; }
 
 .article-page { max-width: 860px; margin: 24px auto 60px; }
