@@ -12,9 +12,21 @@
 
 Search-driven entertainment + Iranian nostalgia + interactive content.
 
+## SEO architecture
+
+- Homepage, section, article and tag archives
+- Metadata and canonical URLs
+- Sitemap and robots
+- Article, collection and website structured data
+- Topic-based internal linking
+
 ## Development
 
 ```bash
 npm install
 npm run dev
 ```
+
+## Production
+
+Set `NEXT_PUBLIC_SITE_URL` to the real public domain before deployment.
