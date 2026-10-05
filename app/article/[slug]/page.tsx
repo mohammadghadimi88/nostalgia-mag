@@ -29,7 +29,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   if (!article) notFound();
 
   const section = getSection(article.section);
-  const related = getRelatedArticles(article, 3);
+  const related = getRelatedArticles(article, 6);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -87,7 +87,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {related.length > 0 && (
           <section className="related">
-            <h2>از همین قفسه</h2>
+            <h2>مطالب مرتبط</h2>
             <div className="article-grid">
               {related.map((item) => <ArticleCard article={item} key={item.slug} />)}
             </div>
