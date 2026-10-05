@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     authors: [{ name: article.author }],
     keywords: article.tags,
     alternates: { canonical: `/article/${article.slug}` },
-    openGraph: { type: "article", title: article.title, description: article.excerpt, publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [article.author], tags: article.tags }
+    openGraph: { type: "article", title: article.title, description: article.excerpt, publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [article.author], tags: article.tags, images: [{ url: `/images/articles/${article.slug}.svg`, width: 1200, height: 675, alt: article.title }] }
   };
 }
 
@@ -40,7 +40,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     author: { "@type": "Organization", name: article.author },
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
-    keywords: article.tags.join(", ")
+    keywords: article.tags.join(", "),
+    mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(`/article/${article.slug}`) },
+    image: absoluteUrl(`/images/articles/${article.slug}.svg`)
   };
 
   const breadcrumbJsonLd = {
