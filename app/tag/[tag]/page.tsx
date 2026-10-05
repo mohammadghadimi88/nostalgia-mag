@@ -28,7 +28,8 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: `مطالب مرتبط با ${tag}`,
-    description: `مطالب نوستالژی مگ درباره ${tag}`
+    description: `مطالب نوستالژی مگ درباره ${tag}`,
+    url: absoluteUrl(`/tag/${encodeURIComponent(tag)}`)
   };
 
   return (
