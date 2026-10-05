@@ -107,3 +107,11 @@ export function getArticle(slug: string) {
 export function getArticlesBySection(sectionSlug: string) {
   return articles.filter((article) => article.section === sectionSlug);
 }
+
+export function getAllTags() {
+  return [...new Set(articles.flatMap((article) => article.tags))].sort((a, b) => a.localeCompare(b, "fa"));
+}
+
+export function getArticlesByTag(tag: string) {
+  return articles.filter((article) => article.tags.includes(tag));
+}
