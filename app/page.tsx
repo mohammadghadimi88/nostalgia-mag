@@ -5,6 +5,10 @@ import { absoluteUrl } from "@/lib/site";
 
 export default function HomePage() {
   const featured = articles.find((article) => article.featured) ?? articles[0];
+  const popular = [...articles].sort((a, b) => {
+    const score = (x: typeof a) => (x.featured ? 8 : 0) + x.tags.length + (x.section === "nostalgia" ? 3 : 0);
+    return score(b) - score(a);
+  }).slice(0, 6);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -33,7 +37,7 @@ export default function HomePage() {
         <div className="section-grid">{sections.filter((section) => !["nostalgia","stars","games","fortune"].includes(section.slug)).map((section) => <Link className="section-card" href={`/${section.slug}`} key={section.slug}><span>مجله</span><h3>{section.title}</h3><p>{section.description}</p></Link>)}</div>
       </section>
         <div className="section-heading"><span>پیشنهاد سردبیر</span><h2 id="popular-heading">اگر این را دوست داشتی...</h2></div>
-        <div className="article-grid">{articles.filter((article) => ["stars", "games", "tv-cinema"].includes(article.section)).slice(0, 3).map((article) => <ArticleCard article={article} key={article.slug} />)}</div>
+        <div className="article-grid">{popular.map((article) => <ArticleCard article={article} key={article.slug} />)}</div>
       </section>
       <footer>نوستالژی مگ — یک مجله اینترنتی با حال‌وهوای گذشته</footer>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
