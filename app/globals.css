@@ -177,3 +177,14 @@ footer nav a { color: inherit; }
 
 .article-topics { margin: 34px 0; }
 .article-topics h2 { margin-bottom: 14px; }
+
+.memory-prompt { margin: 24px 0 34px; padding: 26px; border: 2px solid #17130e; background: #ded1b8; }
+.memory-prompt > span { font-size: .78rem; font-weight: 700; }
+.memory-prompt h2 { margin: 8px 0 6px; font-size: clamp(1.5rem, 4vw, 2.3rem); }
+.memory-prompt > p { margin: 0 0 16px; line-height: 1.9; font-size: 1.05rem; }
+.memory-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.memory-actions button { padding: 10px 14px; border: 1px solid #17130e; background: #f8f2e7; color: #17130e; font: inherit; cursor: pointer; }
+.memory-actions button:hover { background: #17130e; color: #fffaf0; }
+.memory-result { margin-top: 16px; padding-top: 16px; border-top: 1px solid #17130e; }
+.memory-result p { margin: 6px 0 0; line-height: 1.8; }
+@media (max-width: 520px) { .memory-actions { flex-direction: column; } .memory-actions button { width: 100%; text-align: right; } }
