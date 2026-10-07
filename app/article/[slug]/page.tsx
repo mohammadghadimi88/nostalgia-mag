@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getArticle, getRelatedArticles, getSection, articles } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
 import { getTopicsForArticle } from "@/lib/topics";
+import MemoryPrompt from "@/components/MemoryPrompt";
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -106,6 +107,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <div className="article-body">
           {article.content.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
+
+        <MemoryPrompt tags={article.tags} title={article.title} />
 
         {articleTopics.length > 0 && (
           <section className="article-topics" aria-label="پرونده‌های مرتبط">
