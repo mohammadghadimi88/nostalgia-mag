@@ -174,3 +174,6 @@ footer nav a { color: inherit; }
 .topic-card strong { font-size: .82rem; text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 800px) { .topic-grid, .topic-grid.compact { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .topic-grid, .topic-grid.compact { grid-template-columns: 1fr; } }
+
+.article-topics { margin: 34px 0; }
+.article-topics h2 { margin-bottom: 14px; }
