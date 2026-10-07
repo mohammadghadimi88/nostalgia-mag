@@ -4,6 +4,7 @@ import ArticleCard from "@/components/ArticleCard";
 import { notFound } from "next/navigation";
 import { getArticle, getRelatedArticles, getSection, articles } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
+import { getTopicsForArticle } from "@/lib/topics";
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -30,6 +31,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const section = getSection(article.section);
   const related = getRelatedArticles(article, 6);
+  const articleTopics = getTopicsForArticle(article);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -104,6 +106,21 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <div className="article-body">
           {article.content.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
+
+        {articleTopics.length > 0 && (
+          <section className="article-topics" aria-label="پرونده‌های مرتبط">
+            <h2>این مطلب را در این پرونده‌ها دنبال کن</h2>
+            <div className="topic-grid compact">
+              {articleTopics.map((topic) => (
+                <Link className="topic-card" href={"/topic/" + topic.slug} key={topic.slug}>
+                  <span>پرونده موضوعی</span>
+                  <h3>{topic.title}</h3>
+                  <p>{topic.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {related.length > 0 && (
           <section className="related">
