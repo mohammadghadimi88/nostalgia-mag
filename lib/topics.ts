@@ -34,6 +34,18 @@ export function getArticlesByTopic(slug: string, limit = 12): Article[] {
     .map(({ article }) => article);
 }
 
+export function getTopicsForArticle(article: Article, limit = 3): Topic[] {
+  return topics
+    .map((topic) => ({
+      topic,
+      score: topic.tags.reduce((score, tag) => score + (article.tags.includes(tag) ? 1 : 0), 0)
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || a.topic.title.localeCompare(b.topic.title, "fa"))
+    .slice(0, limit)
+    .map(({ topic }) => topic);
+}
+
 export function getRelatedTopics(slug: string, limit = 4): Topic[] {
   const topic = getTopic(slug);
   if (!topic) return [];
