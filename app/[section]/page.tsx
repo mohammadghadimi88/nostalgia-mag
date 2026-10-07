@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { getArticlesBySection, getSection, sections } from "@/lib/content";
+import { topics } from "@/lib/topics";
 import { absoluteUrl } from "@/lib/site";
 import { notFound } from "next/navigation";
 
@@ -50,6 +51,22 @@ export default async function SectionPage({ params }: { params: Promise<{ sectio
           <h2>{featured.title}</h2>
           <p>{featured.excerpt}</p>
           <Link className="hero-link" href={`/article/${featured.slug}`}>خواندن مطلب</Link>
+        </section>
+      )}
+      {section === "nostalgia" && (
+        <section className="topic-shelf" aria-label="نوستالژی بر اساس موضوع">
+          <div className="section-heading">
+            <span>نقشه خاطره‌ها</span>
+            <h2>موضوعات محبوب نوستالژی</h2>
+          </div>
+          <div className="topic-grid compact">
+            {topics.map((topic) => (
+              <Link className="topic-card" href={"/topic/" + topic.slug} key={topic.slug}>
+                <h3>{topic.title}</h3>
+                <p>{topic.description}</p>
+              </Link>
+            ))}
+          </div>
         </section>
       )}
       {tags.length > 0 && (
