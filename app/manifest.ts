@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "نوستالژی مگ",
     short_name: "نوستالژی مگ",
     description: "مجله سرگرمی و فرهنگ عامه ایرانی با حال‌وهوای نوستالژیک.",
-    start_url: siteUrl,
+    start_url: absoluteUrl("/"),
     display: "standalone",
     background_color: "#f4efe4",
     theme_color: "#17130e",
