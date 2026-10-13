@@ -126,8 +126,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         )}
 
         {related.length > 0 && (
-          <section className="related">
-            <h2>مطالب مرتبط</h2>
+          <section className="related" aria-label="ادامه خواندن">
+            <h2>از اینجا ادامه بده</h2>
+            <p className="section-intro">اگر این خاطره برایت آشنا بود، شاید این پرونده‌ها هم چیزی را یادت بیاورند.</p>
             <div className="article-grid">
               {related.map((item) => <ArticleCard article={item} key={item.slug} />)}
             </div>
