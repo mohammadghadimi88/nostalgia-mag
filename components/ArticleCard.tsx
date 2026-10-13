@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Article } from "@/lib/content";
+import { assetPath } from "@/lib/site";
 
 export default function ArticleCard({ article }: { article: Article }) {
   return (
     <article className="article-card">
       <Link className="article-card-media" href={`/article/${article.slug}`} aria-label={article.title}>
         <Image
-          src={`/images/articles/${article.slug}.svg`}
+          src={assetPath(`/images/articles/${article.slug}.svg`)}
           alt=""
           width={960}
           height={540}
