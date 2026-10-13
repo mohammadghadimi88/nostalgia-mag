@@ -56,6 +56,7 @@ export function getRelatedTopics(slug: string, limit = 4): Topic[] {
       topic: item,
       score: item.related?.includes(slug) ? 10 : topic.tags.reduce((score, tag) => score + (item.tags.includes(tag) ? 1 : 0), 0)
     }))
+    .filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score || a.topic.title.localeCompare(b.topic.title, "fa"))
     .slice(0, limit)
     .map(({ topic }) => topic);
