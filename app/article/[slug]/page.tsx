@@ -3,7 +3,7 @@ import Image from "next/image";
 import ArticleCard from "@/components/ArticleCard";
 import { notFound } from "next/navigation";
 import { getArticle, getRelatedArticles, getSection, articles } from "@/lib/content";
-import { absoluteUrl, assetPath } from "@/lib/site";
+import { absoluteUrl, assetPath, articleCoverPath } from "@/lib/site";
 import { getTopicsForArticle } from "@/lib/topics";
 import MemoryPrompt from "@/components/MemoryPrompt";
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     authors: [{ name: article.author }],
     keywords: article.tags,
     alternates: { canonical: absoluteUrl(`/article/${article.slug}`) },
-    openGraph: { type: "article", title: article.title, description: article.excerpt, publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [article.author], tags: article.tags, images: [{ url: absoluteUrl(`/images/articles/${article.slug}.svg`), width: 1200, height: 675, alt: article.title }] }
+    openGraph: { type: "article", title: article.title, description: article.excerpt, publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [article.author], tags: article.tags, images: [{ url: absoluteUrl(articleCoverPath(article.slug, article.section)), width: 1200, height: 675, alt: article.title }] }
   };
 }
 
@@ -92,7 +92,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
           <Image
             className="article-hero-image"
-            src={assetPath(`/images/articles/${article.slug}.svg`)}
+            src={assetPath(articleCoverPath(article.slug, article.section))}
             alt=""
             width={1200}
             height={675}
