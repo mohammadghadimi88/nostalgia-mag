@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nostalgia-mag.example";
+import { absoluteUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/", disallow: "/search" },
-    sitemap: `${baseUrl}/sitemap.xml`
+    sitemap: absoluteUrl("/sitemap.xml")
   };
 }
