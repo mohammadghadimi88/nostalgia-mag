@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     authors: [{ name: article.author }],
     keywords: article.tags,
     alternates: { canonical: absoluteUrl(`/article/${article.slug}`) },
-    openGraph: { type: "article", title: article.title, description: article.excerpt, publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [article.author], tags: article.tags, images: [{ url: assetPath(`/images/articles/${article.slug}.svg`), width: 1200, height: 675, alt: article.title }] }
+    openGraph: { type: "article", title: article.title, description: article.excerpt, publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [article.author], tags: article.tags, images: [{ url: absoluteUrl(`/images/articles/${article.slug}.svg`), width: 1200, height: 675, alt: article.title }] }
   };
 }
 
@@ -49,7 +49,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     dateModified: article.updatedAt,
     keywords: article.tags.join(", "),
     mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(`/article/${article.slug}`) },
-    image: absoluteUrl(assetPath(`/images/articles/${article.slug}.svg`)),
+    image: absoluteUrl(`/images/articles/${article.slug}.svg`),
     publisher: {
       "@type": "Organization",
       name: "نوستالژی مگ",
