@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
   return {
     title: `مطالب مرتبط با ${tag}`,
     description: `مطالب نوستالژی مگ درباره ${tag}`,
-    alternates: { canonical: `/tag/${encodeURIComponent(tag)}` },
+    alternates: { canonical: absoluteUrl(`/tag/${encodeURIComponent(tag)}`) },
     openGraph: { type: "website", title: `مطالب مرتبط با ${tag}`, description: `مطالب نوستالژی مگ درباره ${tag}` }
   };
 }
