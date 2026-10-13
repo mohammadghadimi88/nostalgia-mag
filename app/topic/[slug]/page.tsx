@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { getRelatedTopics, getArticlesByTopic, getTopic, topics } from "@/lib/topics";
+import { getAllTags } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
 import { notFound } from "next/navigation";
 
@@ -27,6 +28,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   const articles = getArticlesByTopic(slug);
   const related = getRelatedTopics(slug);
+  const availableTags = new Set(getAllTags());
+  const visibleTags = topic.tags.filter((tag) => availableTags.has(tag));
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -59,7 +62,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </header>
 
       <nav className="article-tags section-tags" aria-label="کلیدواژه‌های موضوع">
-        {topic.tags.map((tag) => <Link href={"/tag/" + encodeURIComponent(tag)} key={tag}>#{tag}</Link>)}
+        {visibleTags.map((tag) => <Link href={"/tag/" + encodeURIComponent(tag)} key={tag}>#{tag}</Link>)}
       </nav>
 
       <section className="section-intro">
