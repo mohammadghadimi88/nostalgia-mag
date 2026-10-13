@@ -3,6 +3,8 @@ import { articles, getAllTags, sections } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
 import { topics } from "@/lib/topics";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: absoluteUrl("/"), changeFrequency: "daily", priority: 1 },
