@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "مجله سرگرمی، نوستالژی و فرهنگ عامه ایرانی؛ از دهه ۶۰ تا امروز.",
   keywords: ["نوستالژی", "سرگرمی", "مجله", "فرهنگ عامه", "سینما", "تلویزیون", "فال"],
   openGraph: {
-    images: [{ url: assetPath("/opengraph-image.svg"), width: 1200, height: 630, alt: "نوستالژی مگ" }],
+    images: [{ url: absoluteUrl("/opengraph-image.svg"), width: 1200, height: 630, alt: "نوستالژی مگ" }],
     type: "website",
     locale: "fa_IR",
     siteName: "نوستالژی مگ",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "نوستالژی مگ",
     description: "مجله سرگرمی و فرهنگ عامه ایرانی با حال‌وهوای نوستالژیک.",
-    images: [assetPath("/twitter-image.svg")]
+    images: [absoluteUrl("/twitter-image.svg")]
   },
   robots: { index: true, follow: true },
   category: "entertainment",
