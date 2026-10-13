@@ -3,7 +3,7 @@ import Image from "next/image";
 import ArticleCard from "@/components/ArticleCard";
 import { notFound } from "next/navigation";
 import { getArticle, getRelatedArticles, getSection, articles } from "@/lib/content";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, assetPath } from "@/lib/site";
 import { getTopicsForArticle } from "@/lib/topics";
 import MemoryPrompt from "@/components/MemoryPrompt";
 
@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: article.excerpt,
     authors: [{ name: article.author }],
     keywords: article.tags,
-    alternates: { canonical: `/article/${article.slug}` },
-    openGraph: { type: "article", title: article.title, description: article.excerpt, publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [article.author], tags: article.tags, images: [{ url: `/images/articles/${article.slug}.svg`, width: 1200, height: 675, alt: article.title }] }
+    alternates: { canonical: absoluteUrl(`/article/${article.slug}`) },
+    openGraph: { type: "article", title: article.title, description: article.excerpt, publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [article.author], tags: article.tags, images: [{ url: assetPath(`/images/articles/${article.slug}.svg`), width: 1200, height: 675, alt: article.title }] }
   };
 }
 
@@ -49,7 +49,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     dateModified: article.updatedAt,
     keywords: article.tags.join(", "),
     mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(`/article/${article.slug}`) },
-    image: absoluteUrl(`/images/articles/${article.slug}.svg`),
+    image: absoluteUrl(assetPath(`/images/articles/${article.slug}.svg`)),
     publisher: {
       "@type": "Organization",
       name: "نوستالژی مگ",
@@ -92,7 +92,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
           <Image
             className="article-hero-image"
-            src={`/images/articles/${article.slug}.svg`}
+            src={assetPath(`/images/articles/${article.slug}.svg`)}
             alt=""
             width={1200}
             height={675}
